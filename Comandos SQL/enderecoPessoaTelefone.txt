@@ -1,0 +1,34 @@
+// endereco_usauario_telefone
+
+
+ CREATE TABLE endereco (
+    idEndereco INT NOT NULL AUTO_INCREMENT,
+   complemento VARCHAR(100) NOT NULL,
+    estado VARCHAR(3) NOT NULL,
+    cidade VARCHAR(45) NOT NULL,
+    cep DECIMAL(8) NOT NULL,
+    bairro VARCHAR(45) NOT NULL, 
+    logradouro VARCHAR(45) NOT NULL,
+    PRIMARY KEY (idEndereco)
+);
+
+ CREATE TABLE telefone (
+   idTelefone INT NOT NULL AUTO_INCREMENT,
+   numero DECIMAL(9) NOT NULL,
+   operadora VARCHAR(45) NOT NULL,
+   ddd DECIMAL(2) NOT NULL,
+   fk_idPessoa INT NOT NULL,
+    PRIMARY KEY (idTelefone),
+   FOREIGN KEY (fk_idPessoa) REFERENCES (idPessoa)
+);
+
+CREATE TABLE pessoa (
+    idPessoa INT NOT NULL AUTO_INCREMENT,
+    cpf DECIMAL(11) NOT NULL,
+    nome VARCHAR(45) NOT NULL, 
+    sexo VARCHAR(45) NOT NULL, 
+    numeroCasa VARCHAR(45) NOT NULL, 
+    fk_idEndereco INT NOT NULL,
+    PRIMARY KEY (idPessoa),
+    FOREIGN KEY (fk_idEndereco) REFERENCES (idEndereco)
+);

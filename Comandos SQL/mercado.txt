@@ -1,0 +1,28 @@
+// mercado 
+
+
+ CREATE TABLE Produto (
+    idProduto INT NOT NULL AUTO_INCREMENT,
+    nome VARCHAR(45) NOT NULL,
+    quantidade INT NOT NULL,
+    valorUnitario FLOAT NOT NULL,
+    PRIMARY KEY (idProduto)
+);
+
+ CREATE TABLE venda (
+    idVenda INT NOT NULL AUTO_INCREMENT,
+    dataVenda DATETIME NOT NULL,
+    valorTotal FLOAT NOT NULL,
+    PRIMARY KEY (idVenda)
+);
+
+ CREATE TABLE itensVendidos(
+    idItensVendidos INT NOT NULL AUTO_INCREMENT,
+    quantidade INT NOT NULL,
+    valorVenda FLOAT NOT NULL,
+    fk_idVenda INT NOT NULL,
+    fk_idProduto INT NOT NULL,
+    PRIMARY KEY (idItensVendidos),
+    FOREIGN KEY (fk_idVenda) REFERENCES (idVenda)
+    FOREIGN KEY (fk_idProduto) REFERENCES (idProduto)
+);

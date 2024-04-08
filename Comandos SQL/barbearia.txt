@@ -1,0 +1,33 @@
+//banco de dados, Barbearia
+
+//tabela cliente
+ CREATE TABLE cliente (
+    idCliente INT NOT NULL AUTO_INCREMENT,
+    nome VARCHAR(45) NOT NULL,
+    dataNacscimento DATE NOT NULL,
+    whatsapp DECIMAL(9) NOT NULL,
+    PRIMARY KEY (idCliente)
+);
+
+//tabela servico
+ CREATE TABLE servico (
+    idServico INT NOT NULL AUTO_INCREMENT,
+    nome VARCHAR(45) NOT NULL, 
+    valor FLOAT NOT NULL,
+    descricao VARCHAR(100) NOT NULL,
+    PRIMARY KEY (idSevico)
+);
+
+//tabela agenda
+CREATE TABLE agenda (
+    idAgenda INT NOT NULL AUTO_INCREMENT,
+    data DATETIME NOT NULL,
+    pago CHAR(1), 
+    dia DATE NOT NULL,
+    hora TIME NOT NULL, 
+    fk_idCliente INT NOT NULL,
+    fk_idServico INT NOT NULL,
+    PRIMARY KEY (idAgenda),
+    FOREIGN KEY (fk_idCLiente) REFERENCES (idCliente),
+    FOREIGN KEY (fk_idServico) REFERENCES (idServico)
+);

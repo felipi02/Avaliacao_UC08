@@ -1,0 +1,29 @@
+//siteRifa
+
+create table cliente (
+idCliente INT NOT NULL AUTO_INCREMENT,
+nome VARCHAR(45) NOT NULL,
+dataNascimento DATE NOT NULL,
+whatsapp DECIMAL(9) NOT NULL,
+PRIMARY KEY(idCLIENTE)
+);
+
+ CREATE TABLE servico (
+idServico INT NOT NULL AUTO_INCREMENT, 
+nome VARCGAR(45),
+valor FLOAT NOT NULL,
+descricao VARCHAR(100) NOT NULL,
+PRIMARY KEY (idServico)
+);
+
+
+ CREATE TABLE agenda(
+idAgenda INT NOT NULL AUTO_INCREMENT,
+data DATETIME NOT NULL,
+pago CHAR(1) NOT NULL,
+PRIMARY KEY (idAgenda),
+fk_idCliente INT NOT NULL,
+fk_idServico INT NOT NULL,
+FOREIGN KEY (fk_idCliente) REFERENCES (idCliente),
+FOREIGN KEY (fk_idServico) REFERENCES (idServico)
+);
